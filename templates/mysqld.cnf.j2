@@ -17,6 +17,7 @@ tmpdir                     = {{ mysqld.tmpdir }}
 default_storage_engine     = {{ mysqld.default_storage_engine }}
 skip-name-resolve
 sql_mode                   = {{ mysqld.sql_mode }}
+mysql_native_password      = {{ mysqld.mysql_native_password }}
 
 # logging
 log_error                  = {{ mysqld.error_log }}
@@ -34,7 +35,6 @@ log_bin                   = mysql-bin
 log-bin-index             = mysql-bin.index
 binlog_expire_logs_seconds= {{ percona_expire_logs_seconds }}
 max_binlog_size           = {{ percona_max_binlog_size }}
-binlog_format             = {{ mysqld.binlog_format}}
 innodb_autoinc_lock_mode  = {{ mysqld.innodb.autoinc_lock_mode }}
 {% endif %}
 
@@ -73,7 +73,6 @@ lower_case_table_names    = {{ mysqld.lower_case_table_names }}
 init_connect                    = 'SET NAMES {{ mysqld.default.charset }} COLLATE {{ mysqld.default.collate }}'
 character-set-server            = {{ mysqld.default.charset }}
 collation-server                = {{ mysqld.default.collate }}
-skip-character-set-client-handshake
 
 # InnoDB settings
 innodb_dedicated_server         = {{ mysqld.innodb.dedicated_server }}
