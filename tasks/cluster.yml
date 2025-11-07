@@ -64,7 +64,7 @@
 
     - name: cluster | remove innodb_log_files
       file:
-        path: "/var/lib/mysql/{{ item }}"
+        path: "{{ mysqld.datadir }}/{{ item }}"
         state: absent
       loop:
         - ib_logfile0
@@ -74,16 +74,6 @@
       systemd:
         name: 'mysql@bootstrap.service'
         state: started
-      when: bootstrapper
-
-    - name: cluster | create SST user on bootstrapper
-      mysql_user:
-        login_unix_socket: /var/run/mysqld/mysqld.sock
-        login_host: ''
-        user: sst
-        password: "{{ percona_sst_password }}"
-        priv: "*.*:grant,reload,lock tables,process,replication client"
-      no_log: "{{ percona_no_log }}"
       when: bootstrapper
 
     - name: cluster | start percona on not bootstrapper

@@ -12,7 +12,7 @@
     system: true
     group: mysql
     comment: 'MySQL Server'
-    home: /var/lib/mysql
+    home: "{{ mysqld.datadir }}"
     create_home: false
     shell: /sbin/nologin
 

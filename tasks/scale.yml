@@ -58,7 +58,7 @@
 
     - name: scale | remove innodb_log_files on new host
       file:
-        path: "/var/lib/mysql/{{ item }}"
+        path: "{{ mysqld.datadir }}/{{ item }}"
         state: absent
       when: not cluster_status
       loop:

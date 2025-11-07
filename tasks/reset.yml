@@ -16,7 +16,7 @@
     - "rm -rf /root/.my.cnf"
     - "rm -rf /etc/yum.repos.d/percona*"
     - "rm -rf /etc/mysql*"
-    - "rm -rf /var/lib/mysql*"
+    - "rm -rf {{ mysqld.datadir }}/*"
     - "rm -rf /etc/systemd/system/mysql.service*"
     - "rm -rf /etc/sysconfig/garb"
     - "rm -rf var/log/garbd.log"
