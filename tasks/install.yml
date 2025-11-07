@@ -12,7 +12,7 @@
     system: true
     group: mysql
     comment: 'MySQL Server'
-    home: /var/lib/mysql
+    home: "{{ mysqld.datadir }}"
     create_home: false
     shell: /sbin/nologin
 
@@ -51,8 +51,8 @@
       yum:
         name: https://repo.percona.com/yum/percona-release-latest.noarch.rpm
 
-    - name: install | enable pxc 80 repo
-      shell: percona-release setup pxc80 -y
+    - name: install | enable pxc-84-lts repo
+      shell: percona-release setup pxc-84-lts
       when: not arbiter_installed
 
     - name: install | percona xtradb cluster

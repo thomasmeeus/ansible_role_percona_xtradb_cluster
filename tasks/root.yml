@@ -32,18 +32,6 @@
         password "{{ percona_root_password }}"
       no_log: "{{ percona_no_log }}"
 
-    - name: root | set debian-sys-maint user and password
-      mysql_user:
-        name: debian-sys-maint
-        password: "{{ percona_system_password }}"
-        priv: '*.*:ALL,GRANT'
-        update_password: always
-        state: present
-        login_unix_socket: /var/run/mysqld/mysqld.sock
-        login_user: root
-        login_password: "{{ percona_root_password }}"
-      no_log: "{{ percona_no_log }}"
-
     - name: root | copy root.cnf
       template:
         src: root.cnf.j2

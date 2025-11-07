@@ -43,7 +43,7 @@
 
     - name: certs | fetch all required files to localhost
       fetch:
-        src: "/var/lib/mysql/{{ item }}.pem"
+        src: "{{ mysqld.datadir }}/{{ item }}.pem"
         flat: true
         dest: "{{ percona_certs_tmp_dir }}/"
       when:
@@ -60,10 +60,10 @@
         group: mysql
       loop: "{{ percona_certs }}"
 
-    - name: certs | ensure files are removed in /var/lib/mysql
+    - name: certs | ensure files are removed in mysql data dir
       file:
         state: absent
-        path: "/var/lib/mysql/{{ item }}.pem"
+        path: "{{ mysqld.datadir }}/{{ item }}.pem"
       loop: "{{ percona_certs }}"
       when:
         - not arbiter
@@ -73,7 +73,7 @@
       file:
         state: link
         src: "/etc/mysql/certs/{{ item }}.pem"
-        dest: "/var/lib/mysql/{{ item }}.pem"
+        dest: "{{ mysqld.datadir }}/{{ item }}.pem"
       loop: "{{ percona_certs }}"
       when:
         - not arbiter

@@ -4,7 +4,7 @@
 # This config file is to be sourced by garbd service script.
 
 # A space-separated list of hosts addresses (address[:port]) in the cluster:
-GALERA_NODES="{{ ip_without_arbiter | join(':4567 ') }}:4567"
+GALERA_NODES="{{ ip_without_arbiter | sort | map('regex_replace', '$', ':4567') | join(' ') }}"
 
 # Galera cluster name, should be the same as on the rest of the node.
 GALERA_GROUP="{{ percona_cluster.name }}"

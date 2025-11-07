@@ -3,7 +3,7 @@
   dnf:
     name: percona-xtradb-cluster-garbd
 
-- name: arbiter | place gardb config in /etc/sysconfig/garbd
+- name: arbiter | place gardb config in /etc/sysconfig/garb
   template:
     src: arbiter.j2
     dest: /etc/sysconfig/garb
