@@ -15,6 +15,8 @@
           dest: logrotate.d/mysql
         - src: my.cnf.j2
           dest: my.cnf
+        - src: password_policy.cnf.j2
+          dest: password_policy.cnf
       register: config_set
 
     - name: config | test mysql config

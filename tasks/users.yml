@@ -9,7 +9,8 @@
     priv: "{{ item.privs }}"
     host: "{{ item.host }}"
     state: "{{ item.state }}"
-    update_password: always
+    update_password: "{{ item.update_password }}"
+    password_expire: "{{ item.password_expire }}"
   loop: "{{ percona_users }}"
   changed_when: false
   when: (bootstrapper is defined and bootstrapper) or host_count == '1'

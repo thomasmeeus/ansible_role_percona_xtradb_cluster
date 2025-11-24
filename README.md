@@ -51,7 +51,6 @@ The variables for passwords can be set in the `group_vars/all.yml`. Ensure to ch
 ```yaml
 percona_root_password: 'change_me'
 percona_system_password: 'change_me'
-percona_sst_password: 'change_me'
 ```
 
 Before starting/restart the mysql service, a config test is executed. If the config check fails, then the role will also fail. This is done in order to maintain a working mysql service. So please test properly on lower environments when adding/removing configurations to mysql.
@@ -244,6 +243,8 @@ percona_users:
     state: present
     encrypted: no
     host: localhost
+    update_password: 'always'
+    password_expire: 'never'
 ```
 
 ## Mysql values

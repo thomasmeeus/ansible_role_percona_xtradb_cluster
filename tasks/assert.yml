@@ -1,4 +1,5 @@
 ---
+
 - name: assert | get all installed packages
   package_facts:
     manager: auto
@@ -35,7 +36,6 @@
     that:
       - "'change_me' not in percona_root_password"
       - "'change_me' not in percona_system_password"
-      - "'change_me' not in percona_sst_password"
 
 - block:
 

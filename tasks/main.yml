@@ -34,6 +34,9 @@
 - include_tasks: databases.yml
   when: percona_databases | length > 0
 
+- include_tasks: password_policy.yml
+  when: enable_password_policy | bool
+
 - include_tasks: users.yml
   when: percona_users | length > 0
 

@@ -10,7 +10,6 @@ percona_package_deps:
 
 percona_root_password: 'change_me'
 percona_system_password: 'change_me'
-percona_sst_password: 'change_me'
 
 # for debugging purposes, one can set this to false
 percona_no_log: true
@@ -160,3 +159,5 @@ percona_backup:
   skip:
     databases: []
     tables: []
+
+enable_password_policy: false
